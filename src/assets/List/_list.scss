@@ -1,0 +1,20 @@
+.list_main {
+    .list-main-wrapper {
+        padding: 3rem;
+
+        .list-text {
+            text-align: center;
+        }
+
+        .list-data-block {
+            display: flex;
+            align-items: center;
+
+            .list-icon {
+                cursor: pointer;
+                margin-left: 0.5rem;
+                padding-top: 0.5rem;
+            }
+        }
+    }
+}

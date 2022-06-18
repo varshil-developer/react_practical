@@ -1,0 +1,40 @@
+.input-form_main {
+    .main-page--wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        .input-form--wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 2rem;
+            border: 1px solid black;
+            border-radius: 1rem;
+            height: 286px;
+            width: 407px;
+
+
+            .input-form--block {
+                padding: 5rem;
+
+                .input-form--content {
+                    margin-bottom: 1rem;
+
+                    .error-text {
+                        color: red;
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .List-main__page {
+        border: 1px solid black;
+        border-radius: 1rem;
+        height: auto;
+        width: 407px;
+        margin-top: 2rem;
+    }
+}

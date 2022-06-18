@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import * as _ from "lodash";
 import { FETCH_DATA } from "../../action";
 import cuid from "cuid";
+import { Button } from "react-bootstrap"
 
 
 const InputFormSchema = Yup.object({
@@ -82,9 +83,9 @@ const InputForm = () => {
                                                 />
                                             </div>
                                             <div>
-                                                <button type="submit" disabled={isSubmitting} >
+                                                <Button variant="primary" type="submit" disabled={isSubmitting} >
                                                     Submit
-                                                </button>
+                                                </Button>
                                             </div>
 
                                         </div>

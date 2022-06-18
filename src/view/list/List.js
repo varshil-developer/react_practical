@@ -1,16 +1,26 @@
-import React, { useCallback } from "react"
+import React, { useCallback, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import * as _ from "lodash"
-import { TiDeleteOutline } from "react-icons/ti"
+import { BsXLg } from "react-icons/bs"
 import { DELETE_DATA } from "../../action"
+import { Modal } from 'react-bootstrap';
+import { Button } from "react-bootstrap"
 
 const List = () => {
     const listData = useSelector((state) => state.data)
     const dispatch = useDispatch();
+    const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [dataId, setDataId] = useState('');
 
     const deleteListData = useCallback((id) => {
         dispatch({ type: DELETE_DATA, payload: id })
+        setShowDeleteModal(false);
     }, [])
+
+    const handleCloseDeleteModel = () => {
+        setShowDeleteModal(false);
+    };
+
     return (
         <div className="list_main">
             <div className="list-main-wrapper">
@@ -25,14 +35,37 @@ const List = () => {
                                     <ul>
                                         <li>{data.listData}</li>
                                     </ul>
-                                    <div className="list-icon" onClick={() => deleteListData(data.id)}>
-                                        <TiDeleteOutline size={25} />
+                                    <div className="list-icon" onClick={() => {
+                                        setShowDeleteModal(true)
+                                        setDataId(data.id)
+                                    }}>
+                                        <BsXLg size={15} />
                                     </div>
                                 </div>
                             )
                         })
                 }
             </div>
+            {
+                showDeleteModal &&
+                <Modal show={showDeleteModal} centered onHide={handleCloseDeleteModel}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>List</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        Are you sure you want to Delete this?
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="primary" onClick={handleCloseDeleteModel}>
+                            Close
+                        </Button>
+                        <Button variant="danger" onClick={() => deleteListData(dataId)}>
+                            Delete
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+            }
+
         </div>
     )
 }
